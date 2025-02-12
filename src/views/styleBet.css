@@ -1,0 +1,242 @@
+/* Reset de Estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos do Corpo */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1b263b, #0d1b2a);
+    color: #ffffff;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Cabeçalho */
+header {
+    padding: 20px;
+    background: #1b263b;
+    width: 100%;
+    text-align: center;
+    color: #10b981;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    animation: slideInDown 0.8s ease-in-out;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Conteúdo Principal */
+.main-content {
+    margin-top: 100px;
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+    animation: scaleUp 0.5s ease-in-out;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Detalhes do Evento */
+.event-details {
+    margin-bottom: 20px;
+}
+
+.event-details h2 {
+    font-size: 2rem;
+    color: #10b981;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Seção de Aposta */
+.bet-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+    animation: fadeInUp 0.8s ease-in-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.bet-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #10b981;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Opções de Aposta */
+.bet-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.bet-options button {
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    border: 2px solid #10b981;
+    border-radius: 8px;
+    background: transparent;
+    color: #10b981;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.bet-options button.selected,
+.bet-options button:hover {
+    background: #10b981;
+    color: #ffffff;
+    transform: scale(1.1);
+    box-shadow: 0px 4px 10px rgba(16, 185, 129, 0.5);
+}
+
+/* Input de Valor */
+#betAmount {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    border: 2px solid #10b981;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+#betAmount:focus {
+    border-color: #059669;
+}
+
+/* Botão de Aposta */
+.bet-section button {
+    padding: 12px 25px;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    border: 2px solid #10b981;
+    border-radius: 8px;
+    background: #10b981;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.bet-section button:hover {
+    background: #059669;
+    transform: scale(1.05);
+    box-shadow: 0px 4px 10px rgba(16, 185, 129, 0.5);
+}
+
+/* Mensagem de Saldo Insuficiente */
+#balanceMessage {
+    color: #f44336;
+    margin-top: 15px;
+    font-weight: bold;
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+/* Botão de Adicionar Créditos */
+#addCreditsBtn {
+    background: #f44336;
+    color: white;
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#addCreditsBtn:hover {
+    background: #d32f2f;
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .bet-section {
+        width: 95%;
+        padding: 20px;
+    }
+
+    .bet-options button {
+        font-size: 0.9rem;
+        padding: 10px 15px;
+    }
+}

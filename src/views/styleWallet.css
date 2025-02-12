@@ -1,0 +1,274 @@
+/* Reset de Estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Estilos do Corpo */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #0d1b2a, #1b263b);
+    color: #ffffff;
+    padding: 20px;
+    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    padding: 20px;
+    background: #1b263b;
+    width: 100%;
+    color: #10b981;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    animation: slideDown 1s ease-out;
+}
+
+header h1 {
+    font-size: 3rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* Animações */
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+.wallet-button.back-to-home {
+    background-color: #2196F3;
+    width: 100%;
+    font-size: 1.2em;
+    margin-top: 20px;
+}
+
+/* Seção de Saldo */
+.wallet-container {
+    margin-top: 30px;
+    text-align: center;
+    width: 100%;
+    max-width: 450px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.wallet-title {
+    font-size: 2.8rem;
+    color: #10b981;
+    margin-bottom: 10px;
+}
+
+.wallet-balance {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.wallet-buttons {
+    margin-left: 100px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.wallet-button {
+    padding: 14px 28px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    background: #10b981;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    width: 100%;
+    max-width: 250px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.wallet-button:hover {
+    background: #059669;
+    transform: translateY(-5px);
+}
+
+.wallet-button:active {
+    background: #047857;
+    transform: translateY(1px);
+}
+
+.wallet-button.withdraw {
+    background: #f44336;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.wallet-button.withdraw:hover {
+    background: #d32f2f;
+    transform: translateY(-5px);
+}
+
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 0.3s ease;
+}
+
+.modal.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: #1b263b;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.6s ease-in-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.modal-content h2 {
+    font-size: 2rem;
+    color: #10b981;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+.modal-content label,
+.modal-content input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.modal-content input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    color: #ffffff;
+    transition: border-color 0.3s ease;
+}
+
+.modal-content input:focus {
+    border-color: #10b981;
+    outline: none;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.modal-content button {
+    margin: 15px 10px;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 200px;
+    transition: transform 0.2s;
+}
+
+.modal-content button:first-child {
+    background: #10b981;
+    color: white;
+}
+
+.modal-content button:last-child {
+    background: #f44336;
+    color: white;
+}
+
+.modal-content button:hover {
+    transform: scale(1.05);
+}
+
+.modal-content button:active {
+    transform: scale(1);
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .wallet-title {
+        font-size: 2.4rem;
+    }
+
+    .wallet-balance {
+        font-size: 1.6rem;
+    }
+
+    .wallet-button {
+        font-size: 1.1rem;
+    }
+
+    .modal-content {
+        width: 80%;
+    }
+
+    .modal-content button {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .wallet-title {
+        font-size: 2rem;
+    }
+
+    .wallet-balance {
+        font-size: 1.4rem;
+    }
+
+    .wallet-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .modal-content button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}

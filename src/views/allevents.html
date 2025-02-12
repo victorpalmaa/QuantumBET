@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todos os Eventos</title>
+    <link rel="stylesheet" href="alleventsstyles.css">
+</head>
+<body>
+    <header class="allevents-header">
+        <h1>Eventos Disponíveis</h1>
+        <button class="home-button" onclick="redirectToHome()">Voltar para Home</button>
+    </header>
+    <main class="allevents-container">
+        <!-- Os cards serão preenchidos dinamicamente pela API -->
+    </main>
+    <script>
+        // Função para buscar eventos da API com palavra-chave
+        function redirectToHome() {
+            window.location.href = 'home.html'; // URL da página inicial
+        }
+        async function fetchEvents(keyword = '') {
+    try {
+        const url = `http://localhost:3000/getEvents?keyword=${encodeURIComponent(keyword)}`;
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            throw new Error("Erro ao buscar eventos");
+        }
+
+        const allEvents = await response.json();
+
+        // Filtrar eventos com status 'approved'
+        const approvedEvents = allEvents.filter(event => event.status === 'approved');
+
+        const container = document.querySelector('.allevents-container');
+        container.innerHTML = '';
+
+        if (approvedEvents.length === 0) {
+            container.innerHTML = '<p>Nenhum evento aprovado encontrado.</p>';
+            return;
+        }
+
+        // Obter o perfil do usuário chamando o backend
+        const userProfile = await getUserProfile();
+
+        if (!userProfile) {
+            console.log("Perfil do usuário não encontrado.");
+            return;
+        }
+
+        // Verifica se o user_id não é igual a 82 para exibir o botão Admin
+        const isAdmin = userProfile && userProfile.completeName === "Admin";
+        console.log(isAdmin);
+
+        approvedEvents.forEach(event => {
+            const card = document.createElement('div');
+            card.classList.add('event-card');
+
+            const betButton = `<button class="bet-button" onclick="redirectToBetPage(${event.id})">Apostar</button>`;
+            const adminButton = isAdmin ? `<button class="admin-button" onclick="redirectToAdminPage()">Admin</button>` : '';
+
+            card.innerHTML = `
+                <h3>${event.title}</h3>
+                <p>${event.description}</p>
+                <p>Data: ${new Date(event.event_date).toLocaleDateString()}</p>
+                ${betButton}
+             
+            `;
+
+            container.appendChild(card);
+        });
+    } catch (error) {
+        console.error("Erro:", error);
+        const container = document.querySelector('.allevents-container');
+        container.innerHTML = '<p>Ocorreu um erro ao carregar os eventos. Tente novamente mais tarde.</p>';
+    }
+}
+
+        // Função para buscar o perfil do usuário
+        async function getUserProfile() {
+            const token = localStorage.getItem('token');  // Obtém o token do localStorage
+            if (!token) {
+                console.error("Token não encontrado, por favor, faça o login.");
+                return null;
+            }
+
+            try {
+                const response = await fetch('http://localhost:3000/getProfile', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`, // Envia o token no header
+                    },
+                });
+
+                if (response.ok) {
+                    return await response.json();  // Retorna os dados do perfil
+                } else {
+                    console.error("Erro ao obter o perfil.");
+                    return null;
+                }
+            } catch (error) {
+                console.error("Erro ao chamar o backend para obter o perfil:", error);
+                return null;
+            }
+        }
+
+        // Redireciona para a página de apostas com o ID do evento
+        function redirectToBetPage(eventId) {
+            const betPageUrl = `bet.html?eventId=${eventId}`; // Adiciona o ID do evento na URL
+            window.location.href = betPageUrl; // Redireciona o usuário
+        }
+
+        // Redireciona para a página de admin
+        function redirectToAdminPage() {
+            window.location.href = 'admin.html'; // Redireciona o usuário para a página admin.html
+        }
+
+        // Carrega eventos ao abrir a página
+        fetchEvents();
+    </script>
+</body>
+</html>

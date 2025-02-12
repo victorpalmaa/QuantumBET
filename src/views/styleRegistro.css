@@ -1,0 +1,102 @@
+/* Reset de Estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos do Corpo */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4b5563, #1f2937);
+    color: #ffffff;
+}
+
+/* Estilo da Caixa do Formulário */
+.form-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Estilo do Título */
+.form-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #10b981; /* Verde do segundo CSS */
+    animation: slideDown 1s ease-in-out forwards;
+}
+
+/* Estilo dos Inputs */
+form label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 1rem;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    color: #333;
+    transition: all 0.3s;
+}
+
+/* Efeito Hover no Input */
+form input:focus {
+    border-color: #10b981; /* Verde do segundo CSS */
+    background-color: rgba(255, 255, 255, 1);
+    outline: none;
+    transform: scale(1.02);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Estilo do Botão */
+button[type="submit"] {
+    background-color: #10b981; /* Verde do segundo CSS */
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeitos ao Passar o Mouse no Botão */
+button[type="submit"]:hover {
+    background-color: #059669; /* Tom mais escuro de verde */
+    transform: scale(1.05);
+}
+
+button[type="submit"]:active {
+    transform: scale(1);
+    background-color: #047857; /* Tom ainda mais escuro */
+}
+
+/* Animações de Entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideDown {
+    0% { opacity: 0; transform: translateY(-20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,103 @@
+/* Reset de Estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos do Corpo */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4b5563, #1f2937);
+    color: #ffffff;
+}
+
+/* Estilo da Caixa de Login */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+/* Estilo do Título */
+.login-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #10b981; /* Cor alinhada com a home */
+    animation: slideUp 1s ease-in-out forwards;
+}
+
+/* Estilo dos Inputs */
+form label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 1rem;
+    color: #ffffff; /* Cor do texto igual à da home */
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: none; /* Removido para manter a uniformidade */
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo mais escuro */
+    font-size: 1rem;
+    color: #ffffff; /* Texto branco para melhor contraste */
+    transition: all 0.3s;
+}
+
+/* Efeito Hover no Input */
+form input:focus {
+    background-color: rgba(255, 255, 255, 0.3); /* Fundo mais claro ao focar */
+    outline: none;
+    box-shadow: 0 0 10px #10b981; /* Efeito de foco com cor da home */
+}
+
+/* Estilo do Botão */
+button[type="submit"] {
+    background-color: #10b981; /* Cor do botão alinhada com a home */
+    color: #ffffff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Efeitos ao Passar o Mouse no Botão */
+button[type="submit"]:hover {
+    background-color: #059669; /* Cor ao passar o mouse */
+    transform: scale(1.05);
+}
+
+button[type="submit"]:active {
+    transform: scale(1);
+    background-color: #312e81;
+}
+
+
+
+/* Animações de Entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+    0% { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

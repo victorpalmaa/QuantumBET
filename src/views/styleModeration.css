@@ -1,0 +1,104 @@
+/* Reset de Estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos do Corpo */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #4b5563, #1f2937);
+    color: #ffffff;
+}
+
+/* Cabeçalho e Título Principal */
+header {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background: #1f2937;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: #10b981;
+}
+
+/* Container do Formulário */
+.container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+/* Estilos do Formulário */
+label {
+    margin-top: 10px;
+    display: block;
+    color: #ffffff;
+}
+
+input[type="text"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    margin-top: 5px;
+    transition: box-shadow 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus,
+select:focus {
+    box-shadow: 0 0 10px #10b981;
+}
+
+.approval-options {
+    margin: 20px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    background: #10b981;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #059669;
+}
+
+/* Animações e Efeitos */
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.container {
+    animation: slideIn 0.8s ease-in-out;
+}

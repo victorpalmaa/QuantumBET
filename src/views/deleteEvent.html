@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Evento</title>
+    <link rel="stylesheet" href="deletestyles.css"> <!-- Link para o CSS -->
+</head>
+<body>
+    <header>
+        <h1>Deletar Evento</h1>
+    </header>
+
+    <div class="event-delete-container">
+        <form id="deleteEventForm">
+            <label for="eventId">ID do Evento:</label>
+            <input type="number" id="eventId" required>
+
+            <button type="submit">Deletar Evento</button>
+        </form>
+
+        <div id="message" class="message"></div>
+    </div>
+
+    <script src="script.js"></script> <!-- Link para o JavaScript -->
+</body>
+</html>

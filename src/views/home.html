@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Eventos - Home</title>
+    <link rel="stylesheet" href="styleHome.css">
+</head>
+<body>
+    <header>
+        <h1>Bem-vindo à Quantum Bet</h1>
+        <div class="user-controls">
+            <img id="profileImage" src="" alt="Imagem de Perfil" onclick="toggleUserOptions()" style="cursor: pointer;">
+            <span id="profile-name" style="margin-left: 10px;"></span>
+            
+            <!-- Container que ficará oculto inicialmente -->
+            <div id="userOptionsContainer" style="display: none;">
+                <button id="createEventButton" onclick="goToCreateEvent()">Criar Evento</button>
+                <button id="walletButton" onclick="goToWallet()">Minha Wallet</button>
+                <button id="adminButton" onclick="goToAdminPage()">Admin</button> 
+                <button id="closeButton" onclick="logout()">Sair</button>
+                
+            </div>
+        </div>
+        <div class="search-container">
+            <input type="text" placeholder="Busque eventos por palavras-chave..." id="searchInput">
+            <button onclick="searchEvents()">Buscar</button>
+        </div>
+    </header>
+    
+    <main>
+        <section class="highlights">
+            <h2>Aposte em Eventos</h2>
+        
+            
+            <button class="bet-button" onclick="window.location.href='allevents.html'">Apostar</button>
+            <button class="bet-button" onclick="window.location.href='allevents.html'">Eventos proximos de vencer</button>
+            <button class="bet-button" onclick="window.location.href='allevents.html'">Mais apostados</button>
+        </section>
+        
+        
+        
+
+        <!-- Contêiner de resultados de busca -->
+        <section id="searchResults" class="search-results">
+            <div class="event-card" id="eventCard" style="display: none;">
+                <!-- Botão para fechar o card -->
+                <button class="close-btn" id="closeButton" onclick="closeCard()">×</button>
+                
+                <!-- Conteúdo do card -->
+                <h3 id="eventTitle">Título do Evento</h3>
+                <p id="eventDescription">Descrição breve do evento...</p>
+                
+                <!-- Botão para redirecionar para a página de apostas -->
+                <button class="bet-button" onclick="goToBetPage()">Apostar</button>
+                
+                
+            </div>
+        </section>
+    </main>
+
+    <script src="home.js"></script>
+</body>
+</html>

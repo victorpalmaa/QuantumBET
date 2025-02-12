@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minha Carteira</title>
+    <link rel="stylesheet" href="styleWallet.css">
+</head>
+<body>
+    <div class="wallet-container">
+        <h1 class="wallet-title">Minha Carteira</h1>
+        <p class="wallet-balance">Saldo atual: <span id="currentBalance">R$ 0.00</span></p>
+        <div class="wallet-buttons">
+            <button class="wallet-button" onclick="addCreditsModal()">Adicionar Créditos</button>
+            <button class="wallet-button withdraw" onclick="withdrawModal()">Sacar Saldo</button>
+        </div>
+        <!-- Botão para voltar para a página inicial -->
+        <button class="wallet-button back-to-home" onclick="goToHome()">Voltar para Home</button>
+    </div>
+
+    <div id="addCreditsModal" class="modal">
+        <div class="modal-content">
+            <h2>Adicionar Créditos</h2>
+            <input type="number" id="creditAmount" placeholder="Valor em R$" class="modal-input">
+            <div class="modal-actions">
+                <button class="modal-button" onclick="confirmAddCredits()">Confirmar</button>
+                <button class="modal-button close" onclick="closeModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="withdrawModal" class="modal">
+        <div class="modal-content">
+            <h2>Sacar Saldo</h2>
+            <input type="number" id="withdrawAmount" placeholder="Valor em R$" class="modal-input">
+            <input type="text" id="bankDetails" placeholder="Detalhes Bancários" class="modal-input">
+            <div class="modal-actions">
+                <button class="modal-button" onclick="confirmWithdraw()">Confirmar</button>
+                <button class="modal-button close" onclick="closeModal()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addCreditsModal() {
+            document.getElementById('addCreditsModal').style.display = 'flex';
+        }
+
+        function withdrawModal() {
+            document.getElementById('withdrawModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('addCreditsModal').style.display = 'none';
+            document.getElementById('withdrawModal').style.display = 'none';
+        }
+
+        async function confirmAddCredits() {
+            const amount = document.getElementById('creditAmount').value;
+            if (amount <= 0) {
+                alert("Valor inválido.");
+                return;
+            }
+            
+            try {
+                const response = await fetch('http://localhost:3000/addFunds', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ amount })
+                });
+
+                const data = await response.json();
+
+                if (response.status === 201) {
+                    alert('Créditos adicionados com sucesso!');
+                    loadBalance();
+                } else {
+                    alert(`Erro: ${data.message}`);
+                }
+            } catch (error) {
+                console.error("Erro ao adicionar créditos:", error);
+                alert("Erro ao adicionar créditos.");
+            }
+        }
+
+        async function confirmWithdraw() {
+            const amount = parseFloat(document.getElementById('withdrawAmount').value); // Garantir que é um número
+            const bankDetails = document.getElementById('bankDetails').value;
+
+            if (amount <= 0 || !bankDetails) {
+                alert("Preencha os campos corretamente.");
+                return;
+            }
+
+            // Calcula a taxa com base no valor do saque
+            let fee = 0;
+
+            if (amount <= 100) {
+                fee = amount * 0.04;  
+            } else if (amount <= 1000) {
+                fee = amount * 0.03;  // 3% para valores de R$ 101 a R$ 1000
+            } else if (amount <= 5000) {
+                fee = amount * 0.02;  // 2% para valores de R$ 1001 a R$ 5000
+            } else if (amount <= 100000) {
+                fee = amount * 0.01;  // 1% para valores de R$ 5001 a R$ 100.000
+            } else {
+                fee = 0;  // Isento de taxa para valores acima de R$ 101.000
+            }
+
+            // Exibe o valor da taxa para o usuário
+            const totalAmount = amount - fee;  // O valor que será sacado após descontada a taxa
+            alert(`Taxa de saque: R$ ${fee.toFixed(2)}. O valor a ser sacado é R$ ${totalAmount.toFixed(2)}.`);
+
+            try {
+                const response = await fetch('http://localhost:3000/withdrawFunds', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ amount, bankDetails, fee })  // Envia a taxa também para o servidor
+                });
+
+                const data = await response.json();
+
+                if (response.status === 200) {
+                    alert('Saque realizado com sucesso!');
+                    loadBalance(); // Atualiza o saldo após o saque
+                } else {
+                    alert(`Erro: ${data.message}`);
+                }
+            } catch (error) {
+                console.error("Erro ao realizar saque:", error);
+                alert("Erro ao realizar saque.");
+            }
+        }
+
+        async function loadBalance() {
+            try {
+                const response = await fetch('http://localhost:3000/getBalance', {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
+                });
+
+                const data = await response.json();
+                document.getElementById('currentBalance').textContent = `R$ ${data.balance.toFixed(2)}`;
+            } catch (error) {
+                console.error("Erro ao carregar saldo:", error);
+                alert("Erro ao carregar saldo.");
+            }
+        }
+
+        // Função para voltar para a página inicial
+        function goToHome() {
+            window.location.href = "home.html"; // Substitua "index.html" pelo arquivo correto da sua home
+        }
+
+        // Carregar o saldo ao iniciar a página
+        loadBalance();
+    </script>
+</body>
+</html>

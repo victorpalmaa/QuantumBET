@@ -1,0 +1,214 @@
+/* Reset de Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #4b5563, #1f2937);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    overflow-x: hidden;
+}
+
+/* Contêiner Geral */
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    gap: 20px; /* Espaçamento geral entre os elementos */
+}
+
+/* Container do Painel de Administração */
+.container {
+    background: linear-gradient(145deg, #ffffff, #e5e7eb);
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), inset 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 40px 30px;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Cabeçalho */
+header {
+    margin-bottom: 30px; /* Espaçamento inferior para separar do conteúdo */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header h1 {
+    font-size: 2.8rem;
+    color: #1f2937;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #6366f1, #10b981);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s ease;
+    margin-bottom: 10%;
+}
+
+.card-title{
+    margin-bottom: 1%;
+    padding-top: 8%;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #4b5563;
+}
+
+/* Botões Centralizados e Verticalizados */
+.btn-container {
+    display: flex;
+    flex-direction: column; /* Alinha os botões verticalmente */
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Espaçamento vertical entre os botões */
+    margin-top: 30px; /* Distância da seção acima */
+}
+
+/* Estilos dos Botões */
+button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 270px; /* Limita a largura dos botões */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+button:hover::before {
+    left: 0;
+}
+
+button:hover {
+    transform: translateY(-5px);
+}
+
+/* Botões com Cores Diferentes */
+.btn1 {
+    background: linear-gradient(90deg, #10b981, #34d399); /* Verde */
+    color: white;
+}
+
+.btn1:hover {
+    box-shadow: 0 5px 25px rgba(16, 185, 129, 0.5);
+}
+
+.btn2 {
+    background: linear-gradient(90deg, #ef4444, #f87171); /* Vermelho */
+    color: white;
+}
+
+.btn2:hover {
+    box-shadow: 0 5px 25px rgba(239, 68, 68, 0.5);
+}
+
+.btn3 {
+    background: linear-gradient(90deg, #6366f1, #818cf8); /* Roxo */
+    color: white;
+}
+
+.btn3:hover {
+    box-shadow: 0 5px 25px rgba(99, 102, 241, 0.5);
+}
+
+/* Botão de Voltar */
+.btn-back {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 50px;
+    border: none;
+    background: linear-gradient(90deg, #6366f1, #818cf8);
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.btn-back:hover {
+    box-shadow: 0 5px 25px rgba(99, 102, 241, 0.5);
+    transform: translateY(-5px);
+}
+
+/* Animação ao Carregar */
+.container {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    header p {
+        font-size: 1rem;
+    }
+
+    .btn-container {
+        gap: 15px; /* Ajusta o espaçamento para telas menores */
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    header p {
+        font-size: 0.9rem;
+    }
+
+    .btn-container button {
+        padding: 12px 20px;
+    }
+}

@@ -1,0 +1,663 @@
+/* RESET DE ESTILOS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* DEFINIÇÕES GERAIS */
+body {
+    background: linear-gradient(135deg, #1f2937, #4b5563);
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+h1, h2, h3 {
+    font-weight: 700;
+}
+
+/* CABEÇALHO */
+header {
+    width: 100%;
+    padding: 20px;
+    background: rgba(31, 41, 55, 0.95);
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px); /* Adicionando um efeito de desfoque no fundo */
+}
+
+header:hover {
+    background: rgba(31, 41, 55, 1); /* Escurece o fundo quando o usuário passa o mouse */
+}
+
+header h1 {
+    font-size: 2.5rem; /* Aumenta o tamanho do título */
+    margin-bottom: 10px;
+    color: #10b981;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease; /* Adiciona transição suave */
+}
+
+header h1:hover {
+    color: #fbbf24; /* Muda a cor ao passar o mouse */
+    text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4); /* Intensifica o efeito de sombra */
+    transform: translateY(-5px); /* Levanta o título ao passar o mouse */
+}
+
+header .user-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+}
+
+header .user-controls:hover {
+    gap: 25px; /* Aumenta o espaçamento dos botões quando o mouse passa por cima */
+}
+
+header #profileImage {
+    width: 45px; /* Aumenta o tamanho da imagem do perfil */
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+header #profileImage:hover {
+    transform: scale(1.1); /* Efeito de aumento da imagem */
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.8); /* Adiciona um brilho ao redor da imagem */
+}
+
+header #profile-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase; /* Coloca o nome em letras maiúsculas */
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+header #profile-name:hover {
+    color: #fbbf24; /* Muda a cor do nome ao passar o mouse */
+}
+
+header .search-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+header .search-container input {
+    padding: 10px;
+    border: 2px solid #10b981;
+    border-radius: 30px;
+    width: 250px;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+header .search-container input:focus {
+    border-color: #fbbf24; /* Muda a borda para uma cor vibrante ao focar */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra ao focar */
+}
+
+header .search-container button {
+    background-color: #10b981;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+header .search-container button:hover {
+    background-color: #fbbf24; /* Muda a cor do botão ao passar o mouse */
+    transform: scale(1.05); /* Efeito de aumento do botão */
+}
+
+
+#searchResults {
+    display: flex;
+    justify-content: center; /* Centraliza os cards horizontalmente */
+    align-items: center;     /* Centraliza os cards verticalmente */
+    flex-direction: column;
+    gap: 20px; /* Espaçamento entre os cards */
+    padding: 20px;
+    transition: all 0.3s ease; /* Suaviza a transição dos elementos ao serem renderizados */
+}
+
+.event-card {
+    width: 300px; /* Largura fixa para cada card */
+    padding: 20px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Aumenta a sombra para um efeito mais suave */
+    border-radius: 12px; /* Bordas mais arredondadas */
+    background-color: #ffffff; /* Fundo branco para contraste */
+    transition: all 0.3s ease;
+}
+
+.event-card:hover {
+    transform: translateY(-5px); /* Eleva o card ao passar o mouse */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3); /* Sombra mais intensa ao passar o mouse */
+}
+
+.event-card h3 {
+    font-size: 1.6rem;
+    font-weight: 600; /* Aumenta o peso da fonte */
+    margin-bottom: 15px;
+    color: #333; /* Cor de texto mais escura para maior legibilidade */
+    transition: color 0.3s ease;
+}
+
+.event-card h3:hover {
+    color: #10b981; /* Muda a cor para um tom vibrante ao passar o mouse */
+}
+
+.event-card p {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: #555; /* Cor de texto mais suave para a descrição */
+    line-height: 1.6;
+}
+
+.event-card button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.event-card button:hover {
+    background-color: #45a049;
+    transform: scale(1.05); /* Efeito de aumento suave do botão */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Leve sombra ao passar o mouse */
+}
+
+.close-btn {
+    background-color: #f44336; /* Cor vermelha para destacar */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.3s;
+}
+
+.close-btn:hover {
+    background-color: #d32f2f; /* Cor mais escura ao passar o mouse */
+}
+
+#userOptionsContainer {
+    position: absolute;
+    top: 90px; /* Ajusta a posição para ficar abaixo da imagem de perfil */
+    right: 10px;
+    background-color: rgba(31, 41, 55, 0.95); /* Cor de fundo mais escura e semitransparente */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); /* Sombras mais intensas para profundidade */
+    display: none; /* Inicialmente oculto */
+    z-index: 10; /* Garante que o container apareça acima de outros elementos */
+    width: 220px; /* Largura maior para mais conforto */
+    transform: translateY(-10px); /* Inicialmente um pouco mais alto */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* Transições suaves */
+}
+
+#userOptionsContainer button {
+    width: 100%; /* Botões ocupando toda a largura do container */
+    padding: 12px 16px;
+    margin: 10px 0;
+    border: none;
+    background-color: #3e8040;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 1.1rem;
+    border-radius: 6px; /* Bordas arredondadas */
+    transition: all 0.3s ease;
+    
+}
+
+
+#userOptionsContainer button:hover {
+    background-color: #45a049; /* Cor de hover mais intensa */
+    transform: translateX(5px); /* Efeito de movimento suave para a direita */
+};
+
+#userOptionsContainer button:active {
+    background-color: #555; /* Muda para um tom mais escuro ao clicar */
+    transform: scale(0.98); /* Efeito de clique para diminuir o botão */
+}
+
+
+
+
+/* SEARCH CONTAINER */
+header .search-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+    transition: all 0.3s ease; /* Suaviza qualquer transição na busca */
+}
+
+header .search-container input {
+    width: 50%;
+    padding: 14px 20px;
+    border-radius: 6px;
+    border: none;
+    font-size: 1.1rem;
+    outline: none;
+    background: rgba(255, 255, 255, 0.15); /* Fundo mais suave */
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+header .search-container input:focus {
+    box-shadow: 0 0 10px #10b981;
+    background: rgba(255, 255, 255, 0.25); /* Altera o fundo ao focar */
+}
+
+header .search-container button {
+    padding: 14px 20px;
+    border-radius: 6px;
+    border: none;
+    background: #10b981;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase; /* Texto do botão em maiúsculas */
+}
+
+header .search-container button:hover {
+    background: #059669;
+    transform: translateY(-2px); /* Efeito de elevação */
+}
+
+header .search-container button:active {
+    transform: translateY(0); /* Efeito de clique */
+}
+
+/* CONTEÚDO PRINCIPAL */
+main {
+    width: 100%;
+    margin: 40px auto;
+    flex-grow: 1;
+    transition: all 0.3s ease; /* Suaviza mudanças na largura */
+}
+
+/* SEÇÃO DE DESTAQUES */
+.highlights {
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+    padding: 30px;
+    border-radius: 12px;
+    background: rgba(31, 41, 55, 0.8);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        flex-direction: column; 
+        height: 100%; 
+        text-align: center; 
+    
+}
+
+.highlights h2 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    color: #10b981;
+    text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6);
+}
+
+.highlight-card {
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 25px;
+    margin: 15px 0;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    text-align: center;
+    transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.highlight-card:hover {
+    transform: translateY(-5px); /* Eleva o card ao passar o mouse */
+    background: rgba(255, 255, 255, 0.3); /* Clareia o fundo */
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3); /* Sombra mais intensa */
+}
+
+.highlight-card:active {
+    transform: translateY(0); /* Efeito de clique */
+}
+
+/* Estilo adicional para o conteúdo do card */
+.highlight-card p {
+    color: #ddd; /* Texto mais suave */
+    line-height: 1.6;
+    margin-top: 15px;
+    font-size: 1.1rem;
+}
+
+.highlight-card a {
+    color: #10b981;
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.highlight-card a:hover {
+    color: #059669; /* Muda a cor para algo mais vibrante */
+}
+
+.highlight-card:active {
+    transform: scale(1);
+}
+
+/* Botão de Aposta */
+.bet-button {
+    display: flex; /* Habilita o Flexbox */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100%; /* Garante que o container ocupe toda a altura disponível */
+    padding: 14px 28px; /* Aumenta o padding para um botão mais destacado */
+    margin-top: 20px;
+    border-radius: 6px; /* Borda mais suave */
+    border: none;
+    background: #10b981;
+    color: #ffffff;
+    font-size: 1.3rem; /* Aumenta a fonte para tornar o botão mais legível */
+    cursor: pointer;
+    transition: all 0.3s ease, transform 0.2s ease; /* Mais fluidez nas transições */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Sombra suave para destacar o botão */
+}
+
+.bet-button:hover {
+    background: #059669;
+    transform: translateY(-3px); /* Efeito de elevação */
+}
+
+.bet-button:active {
+    transform: scale(0.98); /* Leve redução no clique */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Efeito de sombra mais suave ao clicar */
+}
+
+/* RESULTADOS DE BUSCA - Animações */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Nova animação: Slide-in da esquerda */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Nova animação: Zoom-in */
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Nova animação: Fade-in com rotação */
+@keyframes fadeInRotate {
+    from {
+        opacity: 0;
+        transform: rotate(15deg);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+}
+
+/* Estilo para os elementos de resultado de busca */
+.search-result {
+    animation: fadeIn 0.6s ease-in-out;
+    margin-bottom: 15px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.search-result.slide-in {
+    animation: slideInLeft 0.6s ease-in-out;
+}
+
+.search-result.zoom-in {
+    animation: zoomIn 0.6s ease-in-out;
+}
+
+.search-result.rotate-in {
+    animation: fadeInRotate 0.6s ease-in-out;
+}
+
+/* Adicionando uma animação ao hover de cada resultado */
+.search-result:hover {
+    transform: translateY(-5px); /* Efeito de elevação */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Sombra mais intensa ao passar o mouse */
+}
+
+
+
+
+/* Responsividade do Card */
+@media (max-width: 768px) {
+    .event-card {
+        width: 85%;
+        padding: 20px;
+    }
+
+    .event-card h3 {
+        font-size: 1.6rem;
+    }
+
+    .event-card p {
+        font-size: 1rem;
+    }
+
+    .card-action-btn {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-card {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .event-card h3 {
+        font-size: 1.4rem;
+    }
+
+    .event-card p {
+        font-size: 0.9rem;
+    }
+
+    .card-action-btn {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+}
+
+/* ANIMAÇÕES GLOBAIS */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background: #1f2937;
+    color: #10b981;
+    font-size: 1rem;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.6rem;
+    }
+    .search-container input {
+        width: 80%;
+    }
+    .search-container button {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .highlight-card {
+        font-size: 1rem;
+    }
+    .bet-button {
+        font-size: 1.1rem;
+    }
+    .highlights {
+        padding: 15px;
+    }
+    footer {
+        font-size: 0.9rem;
+    }
+}
+
+/* PARA TELAS MENOR QUE 480px */
+@media (max-width: 480px) {
+    header {
+        padding: 15px;
+    }
+    .user-controls {
+        gap: 8px;
+    }
+    header #profile-name {
+        font-size: 1rem;
+    }
+    .search-container input {
+        width: 60%;
+    }
+    .highlight-card {
+        padding: 15px;
+        font-size: 1rem;
+    }
+    .bet-button {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+    footer {
+        font-size: 0.8rem;
+    }
+}
+
+/* MODAL */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 300;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: rgba(31, 41, 55, 0.95);
+    padding: 30px;
+    border-radius: 10px;
+    color: #ffffff;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    animation: fadeInUp 0.5s ease-in-out;
+}
+
+.modal-content h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.modal-close {
+    background: #f44336;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: #e53935;
+}

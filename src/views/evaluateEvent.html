@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprovar Evento</title>
+    <link rel="stylesheet" href="styleModeration.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Aprovar/Reprovar Evento</h1>
+        <form id="eventApprovalForm">
+            <label for="eventTitle">Título do Evento:</label>
+            <input type="text" id="eventTitle" placeholder="Digite o título do evento" required>
+
+            <label for="eventDescription">Descrição do Evento:</label>
+            <textarea id="eventDescription" placeholder="Digite a descrição do evento" required></textarea>
+
+            <div class="approval-options">
+                <h3>Status do Evento:</h3>
+                <button type="button" id="approveBtn">Aprovar Evento</button>
+                <button type="button" id="rejectBtn">Reprovar Evento</button>
+            </div>
+
+            <div id="rejectionReasonContainer" style="display:none;">
+                <label for="rejectionReason">Motivo da Reprovação:</label>
+                <select id="rejectionReason">
+                    <option value="Texto Confuso">Texto Confuso</option>
+                    <option value="Texto Inapropriado">Texto Inapropriado</option>
+                    <option value="Não respeita a política de privacidade">Não respeita a política de privacidade</option>
+                    <option value="Não respeita os termos de uso">Não respeita os termos de uso</option>
+                </select>
+            </div>
+
+            <button type="submit" id="submitBtn">Enviar</button>
+        </form>
+    </div>
+
+    <script src="moderation.js"></script>
+</body>
+</html>

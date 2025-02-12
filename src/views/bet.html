@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apostar em Evento</title>
+    <link rel="stylesheet" href="styleBet.css">
+</head>
+<body>
+    <header>
+        <h1>Apostar no Evento</h1>
+    </header>
+    
+    <main>
+        <!-- Detalhes do Evento -->
+        <section id="event-details" class="event-section">
+            <!-- Os detalhes do evento serão carregados dinamicamente -->
+        </section>
+
+        <!-- Campo de Aposta -->
+        <section class="bet-section">
+            <!-- Opções de Aposta -->
+            <h3>Escolha sua Aposta</h3>
+            <div class="bet-options">
+                <button onclick="selectBetOption('yes')" id="betYes">Sim</button>
+                <button onclick="selectBetOption('no')" id="betNo">Não</button>
+            </div>
+
+            <!-- Valor da Aposta -->
+            <input type="number" id="betAmount" placeholder="Valor da Aposta (R$)" min="1">
+
+            <!-- Botão de Confirmação -->
+            <button onclick="confirmBet()">Confirmar Aposta</button>
+            <p id="message"></p>
+        </section>
+    </main>
+    
+    <script src="bet.js"></script>
+</body>
+</html>

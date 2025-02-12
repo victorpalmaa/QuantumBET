@@ -1,0 +1,134 @@
+/* Reset de Estilos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Estilos do Corpo */
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Garante o alinhamento ao topo */
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1f2937, #4b5563);
+    color: #ffffff;
+    padding-top: 80px; /* Compensa o espaço ocupado pelo cabeçalho fixo */
+}
+
+/* Cabeçalho */
+header {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background: rgba(31, 41, 55, 0.9); /* Fundo semi-transparente */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    position: fixed; /* Fixa o cabeçalho no topo */
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    color: #10b981;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Container de Finalização do Evento */
+.event-finish-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Animação de Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Estilo dos Campos de Entrada */
+form label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    font-size: 1rem;
+    color: #10b981;
+    font-weight: bold;
+}
+
+form input,
+form select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    margin-bottom: 15px;
+    border: 2px solid #10b981;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 1rem;
+    color: black;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Ajuste de cor para o texto 'Sim' e 'Não' */
+form input[type="radio"] + label {
+    color: #000000; /* Cor preta para o texto de 'sim' e 'não' */
+}
+
+form input:focus,
+form select:focus {
+    border-color: #059669;
+    box-shadow: 0 0 10px #059669;
+    outline: none;
+}
+
+/* Estilo do Botão */
+button[type="submit"] {
+    background-color: #10b981;
+    color: white;
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button[type="submit"]:hover {
+    background-color: #059669;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+button[type="submit"]:active {
+    background-color: #047857;
+    transform: translateY(0);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Mensagem de Feedback */
+.message {
+    margin-top: 15px;
+    font-size: 1.1rem;
+    color: #10b981;
+    font-weight: bold;
+    animation: fadeIn 0.8s ease-in-out;
+}
